@@ -20,16 +20,6 @@ public class MainActivity extends AppCompatActivity  implements BottomNavigation
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        RecyclerView recyclerView = findViewById(R.id.rvNumbers);
-
-
-        List<item> item = new ArrayList<item>();
-        item.add(new item("what is your name", "my name is amrah"));
-
-
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(new MyAdapter(getApplicationContext(), item));
-
         BottomNavigationView NavigationView;
 
 
