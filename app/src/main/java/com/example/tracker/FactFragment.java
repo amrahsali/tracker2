@@ -41,7 +41,11 @@ public class FactFragment extends Fragment {
 
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
         recyclerView.setAdapter(new MyAdapter(getActivity(), item));
+
+
+
 
         return inflater.inflate(R.layout.fragment_fact, container, false);
     }

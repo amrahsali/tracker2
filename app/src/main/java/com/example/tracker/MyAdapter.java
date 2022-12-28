@@ -20,7 +20,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
 
     @NonNull
     @Override
+
+    public int getItemViewType(final int position) {
+        return R.layout.fact_text;
+        }
+
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+
         return new MyViewHolder(LayoutInflater.from(context).inflate(R.layout.fact_text, parent, false));
     }
 
