@@ -19,16 +19,10 @@ public class MainActivity extends AppCompatActivity  implements BottomNavigation
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         BottomNavigationView NavigationView;
-
-
-
         NavigationView = findViewById(R.id.NavigationView);
         NavigationView.setOnNavigationItemSelectedListener(this);
-
         NavigationView.setSelectedItemId(R.id.fact);
-
     }
 
     FactFragment fact = new FactFragment();
