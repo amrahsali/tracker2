@@ -1,0 +1,178 @@
+Index: app/src/main/java/com/example/tracker/MyAdapter.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.tracker;\n\nimport android.content.Context;\nimport android.view.LayoutInflater;\nimport android.view.ViewGroup;\n\nimport androidx.annotation.NonNull;\nimport androidx.recyclerview.widget.RecyclerView;\n\nimport java.util.List;\n\npublic class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {\n    Context context;\n    List<item> item;\n\n    public MyAdapter(Context context, List<com.example.tracker.item> item) {\n        this.context = context;\n        this.item = item;\n    }\n\n    @NonNull\n    @Override\n\n    public int getItemViewType(final int position) {\n        return R.layout.fact_text;\n        }\n\n    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {\n\n        return new MyViewHolder(LayoutInflater.from(context).inflate(R.layout.fact_text, parent, false));\n    }\n\n    @Override\n    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {\n\n        holder.Question.setText(item.get(position).getQuestion());\n        holder.Answer.setText(item.get(position).getAnswer());\n\n    }\n\n    @Override\n    public int getItemCount() {\n        return item.size();\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/tracker/MyAdapter.java b/app/src/main/java/com/example/tracker/MyAdapter.java
+--- a/app/src/main/java/com/example/tracker/MyAdapter.java	(revision be699a87c2956425c8213aa5078de18c0f1c5972)
++++ b/app/src/main/java/com/example/tracker/MyAdapter.java	(date 1672269747636)
+@@ -2,14 +2,17 @@
+ 
+ import android.content.Context;
+ import android.view.LayoutInflater;
++import android.view.View;
+ import android.view.ViewGroup;
++import android.widget.ImageView;
++import android.widget.TextView;
+ 
+ import androidx.annotation.NonNull;
+ import androidx.recyclerview.widget.RecyclerView;
+ 
+ import java.util.List;
+ 
+-public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
++public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
+     Context context;
+     List<item> item;
+ 
+@@ -20,26 +23,31 @@
+ 
+     @NonNull
+     @Override
+-
+-    public int getItemViewType(final int position) {
+-        return R.layout.fact_text;
+-        }
+-
+-    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+-
+-        return new MyViewHolder(LayoutInflater.from(context).inflate(R.layout.fact_text, parent, false));
++        public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
++        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fact_text, parent, false);
++        return new ViewHolder(view);
+     }
+ 
+     @Override
+-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+-
+-        holder.Question.setText(item.get(position).getQuestion());
++    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+         holder.Answer.setText(item.get(position).getAnswer());
+-
++        holder.Question.setText(item.get(position).getQuestion());
+     }
++
+ 
+     @Override
+     public int getItemCount() {
+         return item.size();
+     }
++
++    public static class ViewHolder extends RecyclerView.ViewHolder {
++        private final TextView Question;
++        private final TextView Answer;
++
++        public ViewHolder(@NonNull View itemView) {
++            super(itemView);
++            Question = itemView.findViewById(R.id.question);
++            Answer = itemView.findViewById(R.id.answer);
++}
++}
+ }
+Index: app/src/main/res/layout/fact_text.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\n<LinearLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n    android:padding=\"20dp\"\n    android:layout_width=\"match_parent\"\n    android:layout_height=\"match_parent\">\n\n\n    <LinearLayout\n        android:padding=\"10dp\"\n        android:id=\"@+id/itemView\"\n        android:layout_width=\"wrap_content\"\n        android:background=\"@drawable/boarder_bg\"\n        android:layout_height=\"wrap_content\"\n        android:orientation=\"vertical\">\n        <RelativeLayout\n            android:layout_width=\"wrap_content\"\n            android:layout_height=\"wrap_content\">\n            <TextView\n                android:id=\"@+id/question\"\n                android:layout_width=\"match_parent\"\n                android:layout_height=\"wrap_content\"\n                android:text=\"Q: What is the name of the VC\"/>\n\n\n        </RelativeLayout>\n\n        <RelativeLayout\n            android:layout_width=\"wrap_content\"\n            android:layout_height=\"wrap_content\">\n\n            <TextView\n                android:id=\"@+id/answer\"\n                android:layout_width=\"match_parent\"\n                android:layout_height=\"wrap_content\"\n                android:text=\"A: Musa kabir Ishaq\" />\n        </RelativeLayout>\n\n\n\n    </LinearLayout>\n\n</LinearLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/fact_text.xml b/app/src/main/res/layout/fact_text.xml
+--- a/app/src/main/res/layout/fact_text.xml	(revision be699a87c2956425c8213aa5078de18c0f1c5972)
++++ b/app/src/main/res/layout/fact_text.xml	(date 1672269790338)
+@@ -2,7 +2,7 @@
+ <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     android:padding="20dp"
+     android:layout_width="match_parent"
+-    android:layout_height="match_parent">
++    android:layout_height="wrap_content">
+ 
+ 
+     <LinearLayout
+Index: app/src/main/java/com/example/tracker/item.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.tracker;\n\npublic class item {\n     String Question;\n     String Answer;\n\n    public item(String question, String answer) {\n        Question = question;\n        Answer = answer;\n    }\n\n    public String getQuestion() {\n        return Question;\n    }\n\n    public void setQuestion(String question) {\n        Question = question;\n    }\n\n    public String getAnswer() {\n        return Answer;\n    }\n\n    public void setAnswer(String answer) {\n        Answer = answer;\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/tracker/item.java b/app/src/main/java/com/example/tracker/item.java
+--- a/app/src/main/java/com/example/tracker/item.java	(revision be699a87c2956425c8213aa5078de18c0f1c5972)
++++ b/app/src/main/java/com/example/tracker/item.java	(date 1672269555204)
+@@ -5,8 +5,8 @@
+      String Answer;
+ 
+     public item(String question, String answer) {
+-        Question = question;
+-        Answer = answer;
++        this.Question = question;
++        this.Answer = answer;
+     }
+ 
+     public String getQuestion() {
+Index: app/src/main/java/com/example/tracker/FactFragment.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.tracker;\n\nimport android.os.Bundle;\n\nimport androidx.fragment.app.Fragment;\nimport androidx.recyclerview.widget.LinearLayoutManager;\nimport androidx.recyclerview.widget.RecyclerView;\n\nimport android.view.LayoutInflater;\nimport android.view.View;\nimport android.view.ViewGroup;\n\nimport java.util.ArrayList;\nimport java.util.List;\n\n\npublic class FactFragment extends Fragment {\n\n    private RecyclerView recyclerView;\n\n\n    public FactFragment() {\n        // Required empty public constructor\n    }\n\n\n\n\n    @Override\n    public View onCreateView(LayoutInflater inflater, ViewGroup container,\n                             Bundle savedInstanceState) {\n        // Inflate the layout for this fragment\n\n        View view = inflater.inflate(R.layout.fragment_fact, container, false);\n\n        recyclerView = view.findViewById(R.id.rvNumbers);\n\n\n        List<item> item = new ArrayList<item>();\n        item.add(new item(\"what is your name\", \"my name is amrah\"));\n\n\n        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));\n\n        recyclerView.setAdapter(new MyAdapter(getActivity(), item));\n\n\n\n\n        return inflater.inflate(R.layout.fragment_fact, container, false);\n    }\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/tracker/FactFragment.java b/app/src/main/java/com/example/tracker/FactFragment.java
+--- a/app/src/main/java/com/example/tracker/FactFragment.java	(revision be699a87c2956425c8213aa5078de18c0f1c5972)
++++ b/app/src/main/java/com/example/tracker/FactFragment.java	(date 1672270901533)
+@@ -33,20 +33,24 @@
+ 
+         View view = inflater.inflate(R.layout.fragment_fact, container, false);
+ 
+-        recyclerView = view.findViewById(R.id.rvNumbers);
++        RecyclerView recyclerView = view.findViewById(R.id.rvNumbers);
+ 
+ 
+         List<item> item = new ArrayList<item>();
+         item.add(new item("what is your name", "my name is amrah"));
+ 
+ 
++
++
++
+         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+ 
+         recyclerView.setAdapter(new MyAdapter(getActivity(), item));
+ 
+ 
+-
+-
+         return inflater.inflate(R.layout.fragment_fact, container, false);
++
++
+     }
++
+ }
+\ No newline at end of file
+Index: app/src/main/java/com/example/tracker/MyViewHolder.java
+===================================================================
+diff --git a/app/src/main/java/com/example/tracker/MyViewHolder.java b/app/src/main/java/com/example/tracker/MyViewHolder.java
+deleted file mode 100644
+--- a/app/src/main/java/com/example/tracker/MyViewHolder.java	(revision be699a87c2956425c8213aa5078de18c0f1c5972)
++++ /dev/null	(revision be699a87c2956425c8213aa5078de18c0f1c5972)
+@@ -1,19 +0,0 @@
+-package com.example.tracker;
+-
+-import android.view.View;
+-import android.widget.TextView;
+-
+-import androidx.annotation.NonNull;
+-import androidx.recyclerview.widget.RecyclerView;
+-
+-public class MyViewHolder extends RecyclerView.ViewHolder {
+-    TextView Question, Answer;
+-
+-
+-    public MyViewHolder(@NonNull View itemView) {
+-        super(itemView);
+-
+-        Question = itemView.findViewById(R.id.question);
+-        Answer = itemView.findViewById(R.id.answer);
+-    }
+-}

@@ -33,7 +33,6 @@ public class FactFragment extends Fragment {
     RecyclerView recyclerView;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
-    private FirebaseAuth mAuth;
     private ProgressBar loadingPB;
     private ArrayList<item> courseRVModalArrayList;
     private MyAdapter  myAdapter;
@@ -53,12 +52,10 @@ public class FactFragment extends Fragment {
         loadingPB = view.findViewById(R.id.idPBLoading);
         addQuestionBtn = view.findViewById(R.id.addQandA);
         firebaseDatabase = FirebaseDatabase.getInstance();
-        mAuth = FirebaseAuth.getInstance();
         courseRVModalArrayList = new ArrayList<>();
 
 
         //on below line we are getting database reference.
-        databaseReference = firebaseDatabase.getReference(Objects.requireNonNull(mAuth.getCurrentUser()).getUid() +"questions");
 
         // Add the following lines to create RecyclerView
         RecyclerView recyclerView = view.findViewById(R.id.rvNumbers);
@@ -87,13 +84,13 @@ public class FactFragment extends Fragment {
         // setting adapter to recycler view on below line.
         recyclerView.setAdapter(myAdapter);
         // on below line calling a method to fetch courses from database.
-        getquestion();
+        getFact();
 
         //return inflater.inflate(R.layout.fragment_fact, container, false);
         return view;
 
     }
-    private void getquestion(){
+    private void getFact(){
         // on below line clearing our list.
         courseRVModalArrayList.clear();
         databaseReference.addChildEventListener(new ChildEventListener() {
