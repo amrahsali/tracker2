@@ -5,8 +5,8 @@ public class item {
      String Answer;
 
     public item(String question, String answer) {
-        Question = question;
-        Answer = answer;
+        this.Question = question;
+        this.Answer = answer;
     }
 
     public String getQuestion() {
