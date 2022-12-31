@@ -9,6 +9,8 @@ public class item {
         this.Answer = answer;
     }
 
+    item(){}
+
     public String getQuestion() {
         return Question;
     }

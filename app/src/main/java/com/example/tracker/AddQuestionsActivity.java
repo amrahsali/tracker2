@@ -12,7 +12,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -28,7 +27,6 @@ public class AddQuestionsActivity extends AppCompatActivity {
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
     private ProgressBar loadingPB;
-    private FirebaseAuth mAuth;
 
 
 
@@ -46,9 +44,8 @@ public class AddQuestionsActivity extends AppCompatActivity {
         loadingPB = findViewById(R.id.idPBLoading);
         firebaseDatabase = FirebaseDatabase.getInstance();
 
-        mAuth = FirebaseAuth.getInstance();
         // on below line creating our database reference.
-        databaseReference = firebaseDatabase.getReference(Objects.requireNonNull(mAuth.getCurrentUser()).getUid() +"questions");
+        databaseReference = firebaseDatabase.getReference("questions");
 
     addQuestionBtn.setOnClickListener(new View.OnClickListener() {
     @Override

@@ -15,7 +15,6 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -31,6 +30,7 @@ public class FactFragment extends Fragment {
 
     private FloatingActionButton addQuestionBtn;
     RecyclerView recyclerView;
+
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
     private ProgressBar loadingPB;
@@ -83,6 +83,7 @@ public class FactFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
         // setting adapter to recycler view on below line.
         recyclerView.setAdapter(myAdapter);
+        databaseReference = firebaseDatabase.getReference("questions");
         // on below line calling a method to fetch courses from database.
         getFact();
 
