@@ -86,7 +86,6 @@ public class FactFragment extends Fragment {
         databaseReference = firebaseDatabase.getReference("questions");
         // on below line calling a method to fetch courses from database.
         getFact();
-
         //return inflater.inflate(R.layout.fragment_fact, container, false);
         return view;
 
