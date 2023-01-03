@@ -22,6 +22,7 @@ public class CourseGVAdapter extends ArrayAdapter<CourseModel> {
                 super(context,0, courseModelArrayList);
         }
 
+
         @NonNull
 @Override
 public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
