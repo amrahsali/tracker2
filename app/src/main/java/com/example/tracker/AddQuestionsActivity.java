@@ -18,6 +18,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+
 import java.util.Objects;
 
 public class AddQuestionsActivity extends AppCompatActivity {
@@ -40,7 +41,6 @@ public class AddQuestionsActivity extends AppCompatActivity {
 
         questionEdt = findViewById(R.id.addquestion);
         answerEdt = findViewById(R.id.addanswer);
-
         loadingPB = findViewById(R.id.idPBLoading);
         firebaseDatabase = FirebaseDatabase.getInstance();
 
@@ -70,12 +70,11 @@ public class AddQuestionsActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                // displaying a failure message on below line.
+          //      // displaying a failure message on below line.
                 Toast.makeText(AddQuestionsActivity.this, "Fail to add Question..", Toast.LENGTH_SHORT).show();
             }
 
         });
-
     }
 });
 

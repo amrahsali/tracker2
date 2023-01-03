@@ -21,6 +21,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -106,7 +107,7 @@ public class FactFragment extends Fragment {
 
             @Override
             public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                loadingPB.setVisibility(View.GONE);
+              loadingPB.setVisibility(View.GONE);
                 myAdapter.notifyDataSetChanged();
             }
 
@@ -118,7 +119,7 @@ public class FactFragment extends Fragment {
 
             @Override
             public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                myAdapter.notifyDataSetChanged();
+                 myAdapter.notifyDataSetChanged();
                 loadingPB.setVisibility(View.GONE);
             }
 
