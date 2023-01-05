@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--XMl Layout for RecyclerView-->
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
     <androidx.recyclerview.widget.RecyclerView
@@ -12,7 +13,20 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!--floating action button-->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_gravity="bottom"
+        android:id="@+id/addmap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:src="@drawable/ic_sharp_add_24"
+        app:background="@color/black"
+        app:backgroundTint="@color/teal_200"
+        app:tint="@color/white" />
+
+
+</FrameLayout>
 
 <!--<?xml version="1.0" encoding="utf-8"?>-->
 <!--<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
